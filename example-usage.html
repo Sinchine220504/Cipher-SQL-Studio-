@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CipherSQLStudio - SQL Tutor Example</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+        }
+        .section h2 {
+            margin-top: 0;
+            color: #555;
+        }
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .hint-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 4px solid #4CAF50;
+            border-radius: 4px;
+        }
+        .hint-box h3 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+        .hint-text {
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 CipherSQLStudio - SQL Tutor</h1>
+        
+        <div class="section">
+            <h2>Assignment Description</h2>
+            <textarea id="assignment" placeholder="Enter the assignment question here...">Find all customers who have placed more than 5 orders, showing their name and total order count.</textarea>
+        </div>
+
+        <div class="section">
+            <h2>Table Schema</h2>
+            <textarea id="schema" placeholder="Enter table schemas here...">customers (id, name, email, city)
+orders (id, customer_id, order_date, total)</textarea>
+        </div>
+
+        <div class="section">
+            <h2>Sample Data (Optional)</h2>
+            <textarea id="sample" placeholder="Enter sample data for understanding...">Sample rows to help understand the data structure...</textarea>
+        </div>
+
+        <div class="section">
+            <h2>Your SQL Attempt</h2>
+            <textarea id="query" placeholder="Enter your SQL query here...">SELECT * FROM customers</textarea>
+        </div>
+
+        <button onclick="getHint()">Get Hint</button>
+
+        <div id="hint-container" class="hint-box" style="display: none;">
+            <h3>💡 Hint</h3>
+            <div class="hint-text" id="hint-text"></div>
+        </div>
+    </div>
+
+    <script src="sql-tutor.js"></script>
+    <script>
+        const tutor = new SQLTutor();
+
+        function getHint() {
+            const context = {
+                assignment_description: document.getElementById('assignment').value,
+                table_schema: document.getElementById('schema').value,
+                sample_rows: document.getElementById('sample').value,
+                user_sql_query: document.getElementById('query').value
+            };
+
+            const hint = tutor.provideHint(context);
+            
+            document.getElementById('hint-text').textContent = hint;
+            document.getElementById('hint-container').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+

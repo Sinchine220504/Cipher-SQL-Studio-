@@ -1,0 +1,24 @@
+{
+  "name": "ciphersqlstudio",
+  "version": "1.0.0",
+  "description": "Intelligent SQL tutoring system that provides hints and conceptual guidance",
+  "main": "sql-tutor.js",
+  "scripts": {
+    "test": "node test-tutor.js"
+  },
+  "keywords": [
+    "sql",
+    "tutor",
+    "education",
+    "learning",
+    "hints",
+    "sql-tutor"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/ciphersqlstudio.git"
+  }
+}
+
